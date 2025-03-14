@@ -1,0 +1,384 @@
+:root {
+    --primary-color: #0071e3;
+    --secondary-color: #f5f5f7;
+    --text-color: #1d1d1f;
+    --light-gray: #d2d2d7;
+    --border-radius: 12px;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+    background-color: #fff;
+    color: var(--text-color);
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    font-size: 1.1rem;
+    color: #515154;
+}
+
+.upload-container {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.upload-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    width: 70%;
+    border: 2px dashed var(--light-gray);
+    border-radius: var(--border-radius);
+    background-color: var(--secondary-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 2rem;
+}
+
+.upload-area:hover {
+    border-color: var(--primary-color);
+    background-color: rgba(0, 113, 227, 0.05);
+}
+
+.upload-area.drag-over {
+    border-color: var(--primary-color);
+    background-color: rgba(0, 113, 227, 0.1);
+}
+
+.upload-icon {
+    color: #86868b;
+    margin-bottom: 1rem;
+}
+
+.upload-area p {
+    font-size: 1.1rem;
+    color: #515154;
+}
+
+.editor-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.preview-container {
+    display: flex;
+    justify-content: center;
+    background-color: var(--secondary-color);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    width: 70%;
+    margin: 0 auto;
+}
+
+.preview-wrapper {
+    max-width: 50%;
+    max-height: 400px;
+    overflow: hidden;
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+#previewImage {
+    max-width: 100%;
+    max-height: 380px;
+    display: block;
+    margin: 0 auto;
+}
+
+.controls {
+    background-color: var(--secondary-color);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    gap: 1rem;
+}
+
+.control-group label {
+    min-width: 100px;
+    font-weight: 500;
+}
+
+.control-group input[type="range"] {
+    flex: 1;
+    -webkit-appearance: none;
+    height: 6px;
+    background: #d1d1d6;
+    border-radius: 3px;
+    outline: none;
+}
+
+.control-group input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.control-group span {
+    min-width: 60px;
+    text-align: right;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.btn {
+    flex: 1 0 auto;
+    min-width: 120px;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 20px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn.primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn.primary:hover {
+    background-color: #0062c3;
+}
+
+.btn.secondary {
+    background-color: #e8e8ed;
+    color: var(--text-color);
+}
+
+.btn.secondary:hover {
+    background-color: #d8d8df;
+}
+
+footer {
+    margin-top: 3rem;
+    text-align: center;
+    color: #86868b;
+    font-size: 0.9rem;
+}
+
+@media (min-width: 768px) {
+    .editor-container {
+        flex-direction: column;
+    }
+    
+    .preview-container {
+        flex: initial;
+    }
+}
+
+/* 图片列表样式 */
+.image-list-container {
+    margin-top: 2rem;
+    width: 70%; /* 修改为与预览容器相同的宽度 */
+    margin-left: auto; /* 居中对齐 */
+    margin-right: auto; /* 居中对齐 */
+}
+
+.image-list-container h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+
+/* 修改图片列表为水平滚动 */
+.image-list {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: var(--border-radius);
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* 自定义滚动条样式 */
+.image-list::-webkit-scrollbar {
+    height: 6px;
+}
+
+.image-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.image-list::-webkit-scrollbar-thumb {
+    background: var(--light-gray);
+    border-radius: 3px;
+}
+
+.image-list::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}
+
+/* 调整图片项样式 */
+.image-item {
+    position: relative;
+    min-width: 80px; /* 使用min-width而不是width，确保不会缩小 */
+    height: 80px;
+    margin-right: 10px; /* 添加右侧间距 */
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+    flex-shrink: 0; /* 防止项目被压缩 */
+}
+
+.image-item:last-child {
+    margin-right: 0; /* 最后一项不需要右侧间距 */
+}
+
+.image-item.active {
+    border-color: var(--primary-color);
+}
+
+.image-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-item .processed-indicator {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+}
+
+/* 添加内容包装器 */
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1.5rem;
+}
+
+/* 修改预览容器样式 */
+.preview-container {
+    display: flex;
+    justify-content: center;
+    background-color: var(--secondary-color);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    width: 70%;
+    margin: 0 auto;
+}
+
+/* 修改控件居中样式 */
+.controls-centered {
+    background-color: var(--secondary-color);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* 修改圆角输入框样式 */
+.radius-input-wrapper {
+    display: flex;
+    align-items: center;
+    min-width: 100px;
+}
+
+#radiusInput {
+    width: 100px;
+    padding: 4px 8px;
+    border: 1px solid var(--light-gray);
+    border-radius: 6px;
+    font-size: 14px;
+    text-align: left;
+}
+
+.radius-input-wrapper span {
+    margin-left: 0;
+    padding-left: 4px;
+    color: #515154;
+}
+
+/* 语言切换按钮样式 */
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.title-section {
+    text-align: center;
+    flex: 1;
+}
+
+.language-switcher {
+    display: flex;
+    gap: 5px;
+}
+
+.lang-btn {
+    padding: 5px 10px;
+    background-color: #e8e8ed;
+    border: none;
+    border-radius: 15px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.lang-btn:hover {
+    background-color: #d8d8df;
+}
+
+.lang-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+} 

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="title-section">
+                    <p>上传图片，调整圆角大小，一键下载</p>
+                </div>
+                <div class="language-switcher">
+                    <button class="lang-btn active" data-lang="zh">中文</button>
+                    <button class="lang-btn" data-lang="en">English</button>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="upload-container" id="uploadContainer">
+                <div class="upload-area" id="uploadArea">
+                    <svg class="upload-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="64" height="64">
+                        <path d="M12 4L12 16M12 4L8 8M12 4L16 8M4 17L4 19C4 19.5304 4.21071 20.0391 4.58579 20.4142C4.96086 20.7893 5.46957 21 6 21L18 21C18.5304 21 19.0391 20.7893 19.4142 20.4142C19.7893 20.0391 20 19.5304 20 19L20 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                    </svg>
+                    <p>点击或拖放一张或多张图片到这里</p>
+                    <input type="file" id="fileInput" accept="image/*" multiple hidden>
+                </div>
+            </div>
+
+            <div class="editor-container" id="editorContainer" style="display: none;">
+                <div class="content-wrapper">
+                    <div class="preview-container">
+                        <div class="preview-wrapper">
+                            <img id="previewImage" src="" alt="预览">
+                        </div>
+                    </div>
+                    
+                    <div class="image-list-container" id="imageListContainer">
+                        <h3>待处理图片 (<span id="imageCount">0</span>)</h3>
+                        <div class="image-list" id="imageList"></div>
+                    </div>
+                    
+                    <div class="controls-centered">
+                        <div class="control-group">
+                            <label for="radiusSlider">圆角大小:</label>
+                            <input type="range" id="radiusSlider" min="0" max="100" value="20">
+                            <div class="radius-input-wrapper">
+                                <input type="number" id="radiusInput" min="0" value="20">
+                                <span>px</span>
+                            </div>
+                        </div>
+                        
+                        <div class="buttons">
+                            <button id="downloadBtn" class="btn primary">下载当前图片</button>
+                            <button id="downloadAllBtn" class="btn primary">下载所有图片</button>
+                            <button id="resetBtn" class="btn secondary">重新上传</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="libs/jszip.min.js"></script>
+    <script src="i18n.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
